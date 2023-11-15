@@ -28,5 +28,5 @@ jobs:
       - name: Initialize Terraform
         run: terraform init
 
-      - name: Plan VPC
+      - name: Deploy VPC and EC2
         run: terraform apply -auto-approve
