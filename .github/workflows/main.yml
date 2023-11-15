@@ -30,3 +30,14 @@ jobs:
 
       - name: Deploy VPC and EC2
         run: terraform apply -auto-approve
+      - name: Install Checkov
+        run: pip install checkov
+
+      - name: Run Checkov
+        run: checkov -d .
+
+      - name: Install Terratest
+        run: go get -u github.com/gruntwork-io/terratest/modules/terraform
+
+      - name: Run Terratest
+        run: go test -v test/terratest/
