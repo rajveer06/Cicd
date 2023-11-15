@@ -1,0 +1,25 @@
+name: Terraform Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 0.14.0  # Change this to your desired Terraform version
+
+      - name: Initialize Terraform
+        run: terraform init
+
+      - name: Deploy VPC
+        run: terraform apply -auto-approve
